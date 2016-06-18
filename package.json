@@ -1,0 +1,24 @@
+{
+  "name": "my-scheduler",
+  "version": "1.0.0",
+  "description": "simple scheduling app",
+  "main": "server.js",
+  "private": true,
+  "scripts": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "eslint": "^2.13.0",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.8.1",
+    "eslint-plugin-jsx-a11y": "^1.5.3",
+    "eslint-plugin-react": "^5.2.2",
+    "morgan": "^1.7.0"
+  }
+}
