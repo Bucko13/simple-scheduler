@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname, '../public')));
 app.use(morgan('dev'));                                         // log every request to the console
 app.use(bodyParser.json());                                     // parse application/json
 

@@ -1,0 +1,29 @@
+# reference project by Dan Wahlin: https://github.com/DanWahlin/NodeExpressMongoDBDockerApp
+
+# docker version control. ommitting this defaults to version 1
+# version 2 is currently recommended
+version: '2'
+
+services:
+  # build from the current context
+  # using the available node.dockerfile as reference instructions for build
+  # map local port 3000 to host port 3000
+  node:
+      build:
+        context: .
+        dockerfile: node.dockerfile
+      ports:
+        - "3000:3000"
+      networks:
+        - nodeapp-network
+  # builds using the default mongo repo
+  mongodb:
+     image: mongo
+     networks:
+       - nodeapp-network
+
+# networks are new in v.2
+# see docs for more info: https://docs.docker.com/compose/networking/
+networks:
+  nodeapp-network:
+    driver: bridge
