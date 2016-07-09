@@ -10,12 +10,10 @@ export default class Form extends Component {
   }
 
   changeTaskName(event) {
-    console.log('name event:', event.target.value);
     this.setState({ taskName: event.target.value });
   }
 
   changeTaskDate(event) {
-    console.log('date event:', event.target.value);
     this.setState({ taskDate: event.target.value });
   }
 
@@ -29,7 +27,7 @@ export default class Form extends Component {
           id="task-name"
           placeholder="Task Name"
         />
-        {this.state.taskName}
+        <div className="name-display">{this.state.taskName}</div>
         <label htmlFor="task-date">Task date</label>
         <input
           type="date"
@@ -37,7 +35,7 @@ export default class Form extends Component {
           id="task-date"
           placeholder="Task Date"
         />
-        {this.state.taskDate}
+        <div className="date-display">{this.state.taskName}</div>{this.state.taskDate}
       </div>
     );
   }
