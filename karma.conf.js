@@ -32,7 +32,7 @@ module.exports = (config) => {
     },
 
 
-    reporters: ['unicorn', 'nyan'],
+    reporters: ['nyan'],
 
     colors: true,
 

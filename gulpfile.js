@@ -66,7 +66,7 @@ const bundleApp = isProduction => {
 
 // Gulp tasks
 // ----------------------------------------------------------------------------
-gulp.task('scripts', () => {
+gulp.task('scripts', ['lint', 'test'], () => {
   bundleApp(false);
 });
 
@@ -75,7 +75,10 @@ gulp.task('deploy', () => {
 });
 
 gulp.task('lint', () => {
-
+  return gulp.src(['**/*.js','!node_modules/**', '!public/js/**'])
+    .pipe(eslint())
+    .pipe(eslint.formatEach('stylish'))
+    .pipe(eslint.failAfterError());
 });
 
 // run tests with karma
@@ -90,7 +93,8 @@ gulp.task('test', (done) => {
 gulp.task('watch', () => {
   gulp.watch(
       [
-        './public/**/*.js',
+        './public/components/*.js',
+        './tests/**/*.js',
         './public/**/*.css',
         './public/**/*.scss',
       ],
