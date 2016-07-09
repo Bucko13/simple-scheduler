@@ -1,6 +1,6 @@
 // Karma config file:
 // https://karma-runner.github.io/1.0/config/configuration-file.html
-// Reference: http://www.roblayton.com/2015/03/a-karma-mocha-gulp-and-browserify.html
+'use strict'
 
 module.exports = (config) => {
   config.set({
@@ -9,27 +9,38 @@ module.exports = (config) => {
     // defined in files and exclude
     basepath: '',
 
-    browsers: ['Chrome', 'Firefox'],
+    browsers: ['Chrome'],
 
-    frameworks: ['browserify', 'mocha'],
+    frameworks: ['mocha', 'chai', 'browserify'],
 
     // list of files / patterns to load in the browser
     files: [
       'tests/**/*test.js',
+      // 'public/**/*.js'
     ],
+
+    preprocessors: {
+      'tests/**/*.js': ['browserify'],
+      // 'public/**/*.js': ['browserify'],
+    },
 
     browserify: {
       debug: true,
+      transform: [
+          ["babelify", { presets: "es2015" }]
+      ]
     },
 
-    reporters: ['nyan', 'unicorn'],
+
+    reporters: ['unicorn', 'nyan'],
 
     colors: true,
 
-    browserNoActivityTimeout: 10000,
+    browserNoActivityTimeout: 5000,
 
     // web server port
     port: 9876,
 
+    singleRun: false,
   });
 };

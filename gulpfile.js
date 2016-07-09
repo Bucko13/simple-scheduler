@@ -11,6 +11,8 @@ const browserify = require('browserify');
 const source = require('vinyl-source-stream');
 const gutil = require('gulp-util');
 const babelify = require('babelify');
+const eslint = require('gulp-eslint');
+const Server = require('karma').Server;
 
 // External dependencies you do not want to rebundle while developing,
 // but include in your application deployment
@@ -72,8 +74,28 @@ gulp.task('deploy', () => {
   bundleApp(true);
 });
 
+gulp.task('lint', () => {
+
+});
+
+// run tests with karma
+gulp.task('test', (done) => {
+  let server = new Server({
+    configFile: __dirname.concat('/karma.conf.js'),
+    singleRun: true,
+  }, done);
+  server.start();
+});
+
 gulp.task('watch', () => {
-  gulp.watch(['./public/components/*.js'], ['scripts']);
+  gulp.watch(
+      [
+        './public/**/*.js',
+        './public/**/*.css',
+        './public/**/*.scss',
+      ],
+      ['scripts']
+    );
 });
 
 // When running 'gulp' on the terminal this task will fire.

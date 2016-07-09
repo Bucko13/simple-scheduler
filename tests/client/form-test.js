@@ -1,6 +1,6 @@
-const React = require('react/addons');
-const TestUtils = React.addons.TestUtils;
 import { expect } from 'chai';
+// const React = require('react/addons');
+// const TestUtils = React.addons.TestUtils;
 
 describe('Form Tests', () => {
   describe('First test to make sure system works', () => {
